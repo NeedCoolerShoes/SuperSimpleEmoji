@@ -1,7 +1,7 @@
 ![Java](https://img.shields.io/badge/java-21-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=gradle&logoColor=white)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NeedCoolerShoes/SuperSimpleEmoji)
-![Release](https://img.shields.io/badge/release-alpha-11FF05.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Release](https://img.shields.io/badge/release-alpha-11FF05.svg?style=for-the-badge&logoColor=white)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/NeedCoolerShoes/SuperSimpleEmoji/gradle.yml?style=for-the-badge&logo=github)](https://github.com/NeedCoolerShoes/SuperSimpleEmoji/actions/workflows/gradle.yml)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/NeedCoolerShoes/SuperSimpleEmoji?style=for-the-badge&logo=github)
 ![GitHub Commit Activity](https://img.shields.io/github/commit-activity/w/NeedCoolerShoes/SuperSimpleEmoji?style=for-the-badge&logo=github)
