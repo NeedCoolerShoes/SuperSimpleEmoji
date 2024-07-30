@@ -1,4 +1,4 @@
-![Java](https://img.shields.io/badge/java-17-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Java](https://img.shields.io/badge/java-21-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Maven](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=gradle&logoColor=white)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NeedCoolerShoes/SuperSimpleEmoji)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/NeedCoolerShoes/SuperSimpleEmoji/gradle.yml?style=for-the-badge&logo=github)](https://github.com/NeedCoolerShoes/SuperSimpleEmoji/actions/workflows/gradle.yml)
