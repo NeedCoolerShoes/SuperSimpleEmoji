@@ -1,0 +1,16 @@
+emojis:
+  heart:
+    pattern: '<3'
+    text: '{"text":"❤","color":"red"}'
+  star:
+    pattern: ':star:'
+    text: '{"text":"✮","color":"yellow"}'
+  yes:
+    pattern: ':yes:'
+    text: '{"text":"✔","color":"green"}'
+  no:
+    pattern: ':no:'
+    text: '{"text":"✖","color":"red"}'
+  java:
+    pattern: ':java:'
+    text: '{"text":"☕","bold":true}'
