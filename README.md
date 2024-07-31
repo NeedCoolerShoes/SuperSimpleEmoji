@@ -24,8 +24,9 @@ emojis:
 
 The pattern will be compiled to a regular expression.
 
+The text is interpreted as a JSON text component.
+
 # Known Incompatibilities
 
 LPC
 
-The text is interpreted as a JSON text component.
