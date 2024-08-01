@@ -7,14 +7,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EmojiParser {
-  public static String parse(HashMap<Pattern, String> patterns, String message) {
+  public static String parse(HashMap<String, Emoji> patterns, String message) {
 
     ArrayList<MessageWrapper> messages = new ArrayList<>();
     messages.add(MessageWrapper.unresolved(message));
 
-    for (Map.Entry<Pattern, String> entry : patterns.entrySet()) {
-      Pattern pattern = entry.getKey();
-      String replacement = entry.getValue();
+    for (Map.Entry<String, Emoji> entry : patterns.entrySet()) {
+      Emoji emoji = entry.getValue();
+      Pattern pattern = emoji.pattern;
+      String replacement = emoji.toTag();
 
       messages = parseElement(messages, pattern, replacement);
     }
@@ -27,10 +28,10 @@ public class EmojiParser {
     return output.toString();
   }
 
-  static ArrayList<MessageWrapper> parseElement(ArrayList<MessageWrapper> mesaages, Pattern pattern, String replacement) {
+  static ArrayList<MessageWrapper> parseElement(ArrayList<MessageWrapper> messages, Pattern pattern, String replacement) {
     ArrayList<MessageWrapper> output = new ArrayList<>();
 
-    mesaages.forEach((element) -> {
+    messages.forEach((element) -> {
       if (element.resolved) {
         output.add(element.resolve());
         return;

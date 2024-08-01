@@ -31,8 +31,6 @@ public class Renderer implements ChatRenderer {
   }
 
   private Optional<LuckPerms> luckPerms = Optional.empty();
-  private boolean placeholderApi = false;
-  static final MiniMessage MINI_MESSAGE = MiniMessage.builder().tags(StaticResolvers.USER_DEFAULT).build();
 
   public Renderer() {
     PLUGIN = SuperSimpleEmoji.getInstance();
@@ -41,12 +39,9 @@ public class Renderer implements ChatRenderer {
     ServicesManager servicesManager = server.getServicesManager();
 
     if (pluginManager.isPluginEnabled("LuckPerms")) {
-      luckPerms = Optional.of(
+      luckPerms = Optional.ofNullable(
         servicesManager.load(LuckPerms.class)
       );
-    }
-    if (pluginManager.isPluginEnabled("PlaceholderAPI")) {
-      placeholderApi = true;
     }
   }
 
@@ -55,9 +50,16 @@ public class Renderer implements ChatRenderer {
   public @NotNull Component render(@NotNull Player source, @NotNull Component sourceDisplayName, @NotNull Component message, @NotNull Audience viewer) {
     Component emojiMessage = message;
     if (message instanceof TextComponent) {
+      final MiniMessage miniMessage = MiniMessage.builder().tags(
+        TagResolver.builder()
+          .resolver(DynamicResolvers.emoji(SuperSimpleEmoji.EMOJIS))
+          .resolver(StaticResolvers.USER_DEFAULT)
+          .build()
+      ).build();
+
       String messageText = ((TextComponent) message).content();
-      String emojiText = MiniMessageEmojiParser.parse(MINI_MESSAGE, SuperSimpleEmoji.EMOJIS, messageText);
-      emojiMessage = MINI_MESSAGE.deserialize(emojiText);
+      String emojiText = MiniMessageEmojiParser.parse(miniMessage, SuperSimpleEmoji.EMOJIS, messageText);
+      emojiMessage = miniMessage.deserialize(emojiText);
     }
 
     FormatHelper formatter = new FormatHelper();
@@ -98,6 +100,7 @@ public class Renderer implements ChatRenderer {
         .resolver(StaticResolvers.ADMIN_DEFAULT)
         .resolver(DynamicResolvers.superSimpleEmoji(formatter.format))
         .resolver(DynamicResolvers.placeholderApi(source))
+        .resolver(DynamicResolvers.emoji(SuperSimpleEmoji.EMOJIS))
         .build()
     ).build();
 
@@ -110,7 +113,6 @@ class FormatHelper {
 
   public FormatHelper() {
   }
-
 
   public FormatHelper addLegacy(String key, String text) {
     Component component;

@@ -1,5 +1,6 @@
 package com.needcoolershoes.supersimpleemoji.MiniTags;
 
+import com.needcoolershoes.supersimpleemoji.Emoji;
 import com.needcoolershoes.supersimpleemoji.SuperSimpleEmoji;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
@@ -19,6 +20,10 @@ public class DynamicResolvers {
 
   public static TagResolver placeholderApi(Player player) {
     return new PlaceholderApiTag(player).resolver;
+  }
+
+  public static TagResolver emoji(HashMap<String, Emoji> emojis) {
+    return new EmojiTag(emojis).resolver;
   }
 }
 
@@ -64,5 +69,31 @@ class PlaceholderApiTag {
     String formattedText = PlaceholderAPI.setPlaceholders(player, key);
 
     return Tag.selfClosingInserting(LegacyComponentSerializer.legacyAmpersand().deserialize(formattedText));
+  }
+}
+
+class EmojiTag {
+  final HashMap<String, Emoji> emojis;
+  final TagResolver resolver;
+
+  public EmojiTag(HashMap<String, Emoji> emojis) {
+    this.emojis = emojis;
+
+    resolver = TagResolver.resolver("emoji", this::emojiTag);
+  }
+
+  Tag emojiTag(final ArgumentQueue args, final Context ctx) {
+    final String key = args.popOr("The <emoji> tag requires exactly one argument").value();
+
+    Emoji emoji = emojis.get(key);
+    final Component component;
+
+    if (emoji == null) {
+      component = Component.empty();
+    } else {
+      component = emoji.format;
+    }
+
+    return Tag.selfClosingInserting(component);
   }
 }
