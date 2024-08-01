@@ -2,3 +2,5 @@ name: SuperSimpleEmoji
 version: '${version}'
 main: com.needcoolershoes.supersimpleemoji.SuperSimpleEmoji
 api-version: '1.21'
+
+softdepend: [PlaceholderAPI, LuckPerms]

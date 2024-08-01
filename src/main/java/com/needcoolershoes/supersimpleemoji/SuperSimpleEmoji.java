@@ -1,17 +1,18 @@
 package com.needcoolershoes.supersimpleemoji;
 
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public final class SuperSimpleEmoji extends JavaPlugin {
     static JavaPlugin PLUGIN;
-    static ChatParser PARSER;
+    static HashMap<Pattern, String> EMOJIS = new HashMap<>();
+    static JavaPlugin getInstance() {
+        return PLUGIN;
+    }
 
     @Override
     public void onEnable() {
@@ -19,7 +20,7 @@ public final class SuperSimpleEmoji extends JavaPlugin {
         PLUGIN = this;
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new PluginListeners(), this);
-        setupParser();
+        setupEmojis();
     }
 
     @Override
@@ -27,14 +28,13 @@ public final class SuperSimpleEmoji extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    void setupParser() {
+    void setupEmojis() {
         ConfigurationSection emojiConf = getConfig().getConfigurationSection("emojis");
-        HashSet<Emoji> emojis = new HashSet<>();
-
         if (emojiConf == null) {
-            PARSER = new ChatParser(emojis);
             return;
         }
+
+        EMOJIS = new HashMap<>();
 
         Set<String> keys = emojiConf.getKeys(false);
         for (String key : keys) {
@@ -44,9 +44,9 @@ public final class SuperSimpleEmoji extends JavaPlugin {
             String pattern = emoji.getString("pattern");
             String text = emoji.getString("text");
 
-            emojis.add(new Emoji(key, pattern, text));
-        }
+            if (pattern == null || text == null) { continue; }
 
-        PARSER = new ChatParser(emojis);
+            EMOJIS.put(Pattern.compile(pattern), text);
+        }
     }
 }

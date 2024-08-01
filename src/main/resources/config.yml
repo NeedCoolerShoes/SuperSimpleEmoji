@@ -1,16 +1,19 @@
+chat-format: "<sse:prefix><sse:name>: <rainbow>{message}</rainbow>"
+group-formats:
+
 emojis:
   heart:
     pattern: '<3'
-    text: '{"text":"❤","color":"red"}'
+    text: '<red>❤</red>'
   star:
     pattern: ':star:'
-    text: '{"text":"✮","color":"yellow"}'
+    text: '<yellow>✮</yellow>'
   yes:
     pattern: ':yes:'
-    text: '{"text":"✔","color":"green"}'
+    text: '<green>✔</green>'
   no:
     pattern: ':no:'
-    text: '{"text":"✖","color":"red"}'
+    text: '<red>✖</red>'
   java:
     pattern: ':java:'
-    text: '{"text":"☕","bold":true}'
+    text: '<b>☕</b>'

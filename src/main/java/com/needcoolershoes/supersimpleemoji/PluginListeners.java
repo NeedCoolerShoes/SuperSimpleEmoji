@@ -5,10 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 public class PluginListeners implements Listener {
-    @EventHandler(ignoreCancelled = true)
+    @EventHandler
     public void onPlayerChat(AsyncChatEvent event) {
-        event.message(
-                SuperSimpleEmoji.PARSER.parse(event.signedMessage().message())
-        );
+        event.renderer(Renderer.getInstance());
     }
 }
