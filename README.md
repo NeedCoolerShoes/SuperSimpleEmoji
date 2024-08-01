@@ -19,14 +19,17 @@ Emojis can be configured in `config.yml` as such:
 emojis:
   heart:
     pattern: '<3'
-    text: '{"text":"❤","color":"red"}'
+    text: '<red>❤</red>'
 ```
 
 The pattern will be compiled to a regular expression.
 
-The text is interpreted as a JSON text component.
+The text is interpreted in the MiniMessage format.
 
-# Known Incompatibilities
+## Incompatibilities
+This mod is likely incompatible with any other mod that handles chat formatting.
 
-LPC
+If you encounter any issues, try disabling other plugins first.
 
+### Known to be Incompatible
+- LPC
