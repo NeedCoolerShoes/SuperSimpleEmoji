@@ -5,8 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 public class PluginListeners implements Listener {
-    @EventHandler
-    public void onPlayerChat(AsyncChatEvent event) {
-        event.renderer(Renderer.getInstance());
-    }
+  @EventHandler
+  public void onPlayerChat(AsyncChatEvent event) {
+    event.renderer(Renderer.getInstance());
+  }
 }
