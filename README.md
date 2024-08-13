@@ -33,3 +33,4 @@ If you encounter any issues, try disabling other plugins first.
 
 ### Known to be Incompatible
 - LPC
+- InteractiveChat (only HEX Color codes are broken)
