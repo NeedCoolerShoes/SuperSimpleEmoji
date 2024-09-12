@@ -1,4 +1,4 @@
-chat-format: "<sse:prefix><sse:name>: <rainbow>{message}</rainbow>"
+chat-format: "<sse:prefix><sse:name>: <rainbow><sse:message></rainbow>"
 group-formats:
 
 emojis:
